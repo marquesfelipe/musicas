@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Musicas - Spring Boot/MVC/Data com MongoDB</title>
+<link href="css/bootstrap.css" rel="stylesheet" />
+
+</head>
+<body>
+	<div class="container">
+		<div class="panel-body">
+			<div class="formcontainer">
+				<h2>Adicionar Musica</h2>
+				<form action="/addMusica" method="POST">
+					Banda <input type="text" id="banda" name="banda" /><br /> Nome <input
+						type="text" id="nome" name="nome" /><br /> Ano <input
+						type="text" id="ano" name="ano" /><br /> Letra
+					<textarea rows="5" cols="70" id="letra" name="letra" />
+					<br /> <input type="submit" />
+				</form>
+			</div>
+		</div>
+		<h2>Busca por musicas</h2>
+		<form action="/search" method="POST">
+			<input type="text" name="search" id="search" th:value="${search}" />
+			<input type="submit" value="Search" />
+		</form>
+		<table>
+			<thead>
+				<tr>
+					<th>Banda</th>
+					<th>Nome</th>
+					<th>letra</th>
+					<th>Ano</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="musica : ${listaMusicas}">
+					<td th:text="${musica.banda}"></td>
+					<td th:text="${musica.nome}"></td>
+					<td th:text="${musica.letra}"></td>
+					<td th:text="${musica.ano}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<br />
+	</div>
+</body>
+
+</html>
